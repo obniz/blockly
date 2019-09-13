@@ -66,8 +66,11 @@
 <script src="../blocks/variables_dynamic.js"></script>
 <script src="../blocks/procedures.js"></script>
 <script src="../blocks/pxt_blockly_functions.js"></script>
+  <script src="../blocks/obniz.js"></script>
+  <script src="../blocks/obniz_parts.js"></script>
+  <script src="../blocks/obniz_ui.js"></script>
 <script src="blocks/test_blocks.js"></script>
-<script src="blocks/pxt_test_blocks.js"></script>
+  <script src="blocks/pxt_test_blocks.js"></script>
 <script>
 'use strict';
 var workspace = null;
@@ -726,6 +729,52 @@ line.blocklyFlyoutLine {
       <block type="logic_boolean"></block>
       <block type="logic_null" disabled="true"></block>
       <block type="logic_ternary"></block>
+    </category>
+
+    <category name="%{localized.peripheral}" colour="%{OBNIZ_PERIPHERAL_HUE}" iconclass="blocklyTreeIconCustom iconPeripheral">
+      <label text="Digital" web-class="ioLabel"></label>
+
+      <block type="obniz_io_output"></block>
+      <block type="obniz_io_input"></block>
+      <label text="Analog" web-class="ioLabel"></label>
+      <block type="obniz_ad_input"></block>
+
+      <label text="UART" web-class="ioLabel"></label>
+      <button text="%{CREATE_BUTTON_UART}" callbackkey="obnizUartVariableButton"></button>
+      <block type="obniz_parts_uart_wired">
+        <value name="rx">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="tx">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="baud">
+          <shadow type="math_number">
+            <field name="NUM">9600</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="obniz_parts_uart_send_string">
+        <value name="text">
+          <shadow type="text">
+            <field name="TEXT">Hello</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="obniz_parts_uart_send_number">
+        <value name="num">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="obniz_parts_uart_is_data_exists"></block>
+      <block type="obniz_parts_uart_read_text"></block>
+      <block type="obniz_parts_uart_read_number"></block>
     </category>
     <category name="Loops" categorystyle="loop_category" iconclass="blocklyTreeIconCustom loops">
       <label text="Loops" web-icon="" web-class="blocklyFlyoutHeading"></label>

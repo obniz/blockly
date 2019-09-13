@@ -162,25 +162,6 @@ Blockly.FieldNumber.prototype.setConstraints_ = function(opt_min, opt_max,
   this.max_ = isNaN(max) ? Infinity : max;
 };
 
-/**
- * Show the inline free-text editor on top of the text and the num-pad if
- * appropriate.
- * @param {!Event} e A mouse down or touch start event.
- * @param {boolean=} opt_showNumPad If true, show the num pad.
- * @private
- */
-Blockly.FieldNumber.prototype.showEditor_ = function(e, opt_showNumPad) {
-  Blockly.FieldNumber.activeField_ = this;
-  // Do not focus on mobile devices so we can show the num-pad
-  var showNumPad = (typeof opt_showNumPad !== "undefined") ? opt_showNumPad :
-      (Blockly.utils.userAgent.MOBILE || Blockly.utils.userAgent.ANDROID || Blockly.utils.userAgent.IPAD);
-  Blockly.FieldNumber.superClass_.showEditor_.call(this, e, false, showNumPad);
-
-  // Show a numeric keypad in the drop-down on touch
-  if (showNumPad) {
-    this.showNumPad_();
-  }
-};
 
 /**
  * Show the number pad.
